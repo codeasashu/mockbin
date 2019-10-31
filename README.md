@@ -100,6 +100,13 @@ npm start
 
 Read the full API documentation, please review the [API Docs](https://github.com/Kong/mockbin/tree/master/docs).
 
+## Roadmap
+
+- Swagger integration
+- Existing API to swagger export
+- Json editor support in body
+- Json schema validator inline
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please first read the [issue guidelines](CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](/issues).

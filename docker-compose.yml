@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  mock:
+    build:
+      context: .
+      args:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+    image: kong/mockbin
+    depends_on:
+    - redis
+    networks: 
+    - mock_network
+    ports:
+      - 5000:8080
+  redis:
+    image: redis:alpine
+    volumes:
+    - redis_data:/data
+    networks: 
+    - mock_network
+
+volumes: 
+  redis_data: {}
+
+networks: 
+  mock_network: {}

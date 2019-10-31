@@ -1,4 +1,18 @@
-FROM node:0.10-onbuild
+FROM node:10
 
-RUN npm config set mockbin:redis redis://redis:6379
+ARG REDIS_HOST
+ARG REDIS_PORT
+
+ENV REDIS_HOST ${REDIS_HOST:-'redis'}
+ENV REDIS_PORT ${REDIS_PORT:-'6379'}
+
+ADD package.json .
+
+RUN npm install
+
+ADD . .
+
+RUN npm config set mockbin:redis redis://${REDIS_HOST}:${REDIS_PORT}
 EXPOSE 8080
+
+CMD ["npm", "start"]
